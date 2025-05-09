@@ -8,75 +8,8 @@ import { Doctor } from '../../interfaces/doctor.interface';
   selector: 'app-doctors',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  template: `
-    <div class="container">
-      <h2>Gestión de Médicos</h2>
-      
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Especialidad ID</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let doctor of doctors">
-            <td>{{doctor.nombre}}</td>
-            <td>{{doctor.apellido}}</td>
-            <td>{{doctor.especialidad_id}}</td>
-            <td>{{doctor.email}}</td>
-            <td>{{doctor.telefono}}</td>
-            <td>
-              <button (click)="editDoctor(doctor)">Editar</button>
-              <button (click)="deleteDoctor(doctor.id!)">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div *ngIf="selectedDoctor" class="form-container">
-        <h3>{{isEditing ? 'Editar' : 'Nuevo'}} Médico</h3>
-        <form (submit)="saveDoctor()">
-          <div>
-            <label>Nombre:</label>
-            <input [(ngModel)]="selectedDoctor.nombre" name="nombre" required>
-          </div>
-          <div>
-            <label>Apellido:</label>
-            <input [(ngModel)]="selectedDoctor.apellido" name="apellido" required>
-          </div>
-          <div>
-            <label>Especialidad ID:</label>
-            <input [(ngModel)]="selectedDoctor.especialidad_id" name="especialidad_id" type="number" required>
-          </div>
-          <div>
-            <label>Email:</label>
-            <input [(ngModel)]="selectedDoctor.email" name="email" type="email" required>
-          </div>
-          <div>
-            <label>Teléfono:</label>
-            <input [(ngModel)]="selectedDoctor.telefono" name="telefono" required>
-          </div>
-          <button type="submit">Guardar</button>
-          <button type="button" (click)="cancelEdit()">Cancelar</button>
-        </form>
-      </div>
-
-      <button *ngIf="!selectedDoctor" (click)="startNewDoctor()">Nuevo Médico</button>
-    </div>
-  `,
-  styles: [`
-    .container { padding: 20px; }
-    .table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-    .table th, .table td { padding: 8px; border: 1px solid #ddd; }
-    .form-container { margin-top: 20px; }
-    .form-container div { margin-bottom: 10px; }
-    button { margin-right: 5px; }
-  `]
+  templateUrl: './doctors.component.html',
+  styleUrls: ['./doctors.component.css']
 })
 export class DoctorsComponent implements OnInit {
   doctors: Doctor[] = [];

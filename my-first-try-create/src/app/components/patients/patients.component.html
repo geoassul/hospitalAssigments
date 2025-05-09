@@ -1,0 +1,53 @@
+<div class="container">
+  <h2>Gestión de Pacientes</h2>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients">
+        <td>{{patient.nombre}}</td>
+        <td>{{patient.apellido}}</td>
+        <td>{{patient.email}}</td>
+        <td>{{patient.telefono}}</td>
+        <td>
+          <button (click)="editPatient(patient)">Editar</button>
+          <button (click)="deletePatient(patient.id!)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedPatient" class="form-container">
+    <h3>{{isEditing ? 'Editar' : 'Nuevo'}} Paciente</h3>
+    <form (submit)="savePatient()">
+      <div>
+        <label>Nombre:</label>
+        <input [(ngModel)]="selectedPatient.nombre" name="nombre" required>
+      </div>
+      <div>
+        <label>Apellido:</label>
+        <input [(ngModel)]="selectedPatient.apellido" name="apellido" required>
+      </div>
+      <div>
+        <label>Email:</label>
+        <input [(ngModel)]="selectedPatient.email" name="email" type="email" required>
+      </div>
+      <div>
+        <label>Teléfono:</label>
+        <input [(ngModel)]="selectedPatient.telefono" name="telefono" required>
+      </div>
+      <button type="submit">Guardar</button>
+      <button type="button" (click)="cancelEdit()">Cancelar</button>
+    </form>
+  </div>
+
+  <button *ngIf="!selectedPatient" (click)="startNewPatient()">Nuevo Paciente</button>
+</div>
