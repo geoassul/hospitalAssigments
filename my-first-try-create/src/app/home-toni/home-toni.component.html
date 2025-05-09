@@ -1,0 +1,70 @@
+<div class="header">
+  <nav class="navbar">
+    <div class="nav-brand">
+      <a href="#" class="logo">HealthCare</a>
+    </div>
+    <button class="menu-toggle" (click)="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-links" [class.active]="isMenuOpen">
+      <li><a href="#" class="active">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" (click)="toggleDropdown('services', $event)">
+          Services <span class="arrow">▼</span>
+        </a>
+        <ul class="dropdown-menu" [class.show]="activeDropdown === 'services'">
+          <li><a href="#">Consultations</a></li>
+          <li><a href="#">Treatments</a></li>
+          <li><a href="#">Emergency Care</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" (click)="toggleDropdown('doctors', $event)">
+          Doctors <span class="arrow">▼</span>
+        </a>
+        <ul class="dropdown-menu" [class.show]="activeDropdown === 'doctors'">
+          <li><a href="#">Find a Doctor</a></li>
+          <li><a href="#">Specialties</a></li>
+          <li><a href="#">Schedule</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" (click)="toggleDropdown('patients', $event)">
+          Patients <span class="arrow">▼</span>
+        </a>
+        <ul class="dropdown-menu" [class.show]="activeDropdown === 'patients'">
+          <li><a href="#">Appointments</a></li>
+          <li><a href="#">Medical Records</a></li>
+          <li><a href="#">Prescriptions</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#" (click)="logout($event)">Cerrar Sesión</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="home-toni-container">
+  <section class="hero-section">
+    <h1>Welcome to HealthCare Platform</h1>
+    <p>Discover a modern and intuitive way to manage your healthcare needs with our comprehensive platform.</p>
+    <button class="cta-button" routerLink="/appointment/new">Schedule Appointment</button>
+  </section>
+
+  <div class="content-grid">
+    <div class="content-card">
+      <h2>Easy Scheduling</h2>
+      <p>Book appointments with your preferred healthcare providers quickly and efficiently.</p>
+    </div>
+    <div class="content-card">
+      <h2>Digital Records</h2>
+      <p>Access your medical history and health records securely from anywhere, anytime.</p>
+    </div>
+    <div class="content-card">
+      <h2>Expert Care</h2>
+      <p>Connect with qualified healthcare professionals specialized in various medical fields.</p>
+    </div>
+  </div>
+</div>

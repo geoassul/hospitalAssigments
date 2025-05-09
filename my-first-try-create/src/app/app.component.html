@@ -1,0 +1,25 @@
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+    <h1>Sistema de Gestión Hospitalaria</h1>
+    <ul class="nav-links">
+      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+      <li><a routerLink="/second-home" routerLinkActive="active">Second Home</a></li>
+      <li><a routerLink="/patients" routerLinkActive="active">Pacientes</a></li>
+      <li><a routerLink="/doctors" routerLinkActive="active">Médicos</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" (click)="toggleUserMenu($event)">
+          Usuario <span class="arrow">▼</span>
+        </a>
+        <ul class="dropdown-menu" [class.show]="isUserMenuOpen">
+          <li><a (click)="cerrarSesion()">Cerrar Sesión</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
